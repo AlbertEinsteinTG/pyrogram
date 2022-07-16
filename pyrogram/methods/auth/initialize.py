@@ -18,14 +18,15 @@
 
 import logging
 
-from pyrogram.scaffold import Scaffold
-from pyrogram.syncer import Syncer
+import pyrogram
 
 log = logging.getLogger(__name__)
 
 
-class Initialize(Scaffold):
-    async def initialize(self):
+class Initialize:
+    async def initialize(
+        self: "pyrogram.Client",
+    ):
         """Initialize the client by starting up workers.
 
         This method will start updates and download workers.
@@ -44,6 +45,7 @@ class Initialize(Scaffold):
         self.load_plugins()
 
         await self.dispatcher.start()
-        await Syncer.add(self)
+
+        self.me = await self.get_me()
 
         self.is_initialized = True
