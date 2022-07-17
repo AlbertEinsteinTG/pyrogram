@@ -17,12 +17,11 @@
 #  along with Pyrogram.  If not, see <http://www.gnu.org/licenses/>.
 
 from typing import Union, Optional, AsyncGenerator
-
+import pyrogram
 from pyrogram import types
-from pyrogram.scaffold import Scaffold
 
 
-class IterMessages(Scaffold):
+class IterMessages:
     async def iter_messages(
         self,
         chat_id: Union[int, str],
