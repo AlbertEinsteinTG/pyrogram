@@ -20,14 +20,14 @@ import asyncio
 from typing import Union
 from functools import partial
 
+import pyrogram
 from pyrogram import types
 from pyrogram.filters import Filter
-from pyrogram.scaffold import Scaffold
 
 
-class WaitForMessage(Scaffold):
+class WaitForMessage:
     async def wait_for_message(
-        self,
+        self: "pyrogram.Client",
         chat_id: Union[int, str],
         filters: Filter = None,
         timeout: int = None
